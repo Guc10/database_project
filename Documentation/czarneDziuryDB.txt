@@ -1,0 +1,78 @@
+Baza danych: czarnedziurydb
+Kodowanie: utf8mb4_uca1400_ai_ci
+
+Tabela: badacze
+
+Id_badacza (int, PRIMARY KEY, AUTO_INCREMENT)
+imie (text, NOT NULL)
+nazwisko (text, NOT NULL)
+instytucja (enum, NOT NULL) - wartości: NASA, ESA, ISRO, CSA
+
+Tabela: czarnedziury
+
+Id_czarnej_dziury (int, PRIMARY KEY, AUTO_INCREMENT)
+nazwa (varchar(30), NOT NULL)
+masa (float(15,3), NOT NULL)
+typ (enum, NOT NULL) - wartości: gwiazdowe, supermasywne, pierwotne
+odleglosc_od_ziemi (double(20,3), NOT NULL)
+
+Tabela: galaktyki
+
+Id_galaktyki (int, PRIMARY KEY, AUTO_INCREMENT)
+nazwa (varchar(30), NOT NULL)
+numer_katalogowy_ngc (int(15), NOT NULL, DEFAULT 0)
+
+Tabela: lokalizacje
+
+Id_lokalizacji (int, PRIMARY KEY, AUTO_INCREMENT)
+Id_czarnej_dziury (int, NOT NULL, UNIQUE, FOREIGN KEY -> czarnedziury.Id_czarnej_dziury)
+Id_galaktyki (int, NOT NULL, FOREIGN KEY -> galaktyki.Id_galaktyki)
+wspolrzedne_RA (float(15,3), NOT NULL)
+wspolrzedne_DEC (float(15,3), NOT NULL)
+
+Tabela: teleskopy
+
+Id_teleskopu (int, PRIMARY KEY, AUTO_INCREMENT)
+nazwa (varchar(30), NOT NULL)
+typ (enum, NOT NULL) - wartości: naziemny, kosmiczny
+czy_w_uzyciu (tinyint(1), NOT NULL)
+
+Tabela: obserwacje
+
+Id_obserwacji (int, PRIMARY KEY, AUTO_INCREMENT)
+Id_czarnej_dziury (int, NOT NULL, FOREIGN KEY -> czarnedziury.Id_czarnej_dziury)
+data_obserwacji (date, NOT NULL)
+Id_teleskopu (int, NOT NULL, FOREIGN KEY -> teleskopy.Id_teleskopu)
+zakres_promieniowania (enum, NOT NULL) - wartości: rentgenowskie, radiowe, hawkinga, gamma
+
+Tabela: badacze_obserwacje
+
+Id (int, PRIMARY KEY, AUTO_INCREMENT)
+Id_badacza (int, NOT NULL, FOREIGN KEY -> badacze.Id_badacza)
+Id_obserwacji (int, NOT NULL, FOREIGN KEY -> obserwacje.Id_obserwacji)
+czy_udane(y/n) (char, NOT NULL, DEFAULT 'n')
+
+Tabela: zjawiska
+
+Id_zjawiska (int, PRIMARY KEY, AUTO_INCREMENT)
+nazwa (varchar(100), NOT NULL)
+opis (varchar(200), NOT NULL)
+
+Tabela: czarnedziury_zjawiska
+
+Id_zjawiska (int, NOT NULL, FOREIGN KEY -> zjawiska.Id_zjawiska)
+Id_czarnejdziury (int, NOT NULL, FOREIGN KEY -> czarnedziury.Id_czarnej_dziury)
+data_zjawiska (timestamp, NOT NULL)
+
+Relacje między tabelami:
+
+lokalizacje łączy czarnedziury z galaktyki (1:1 dla czarnej dziury, 1:N dla galaktyk)
+
+obserwacje łączy czarnedziury z teleskopy (N:M, bo teleskop może mieć wiele obserwacji i czarna dziura może być obserwowana wieloma teleskopami)
+
+badacze_obserwacje łączy badacze z obserwacje (N:M, bo wielu badaczy może brać udział w jednej obserwacji i odwrotnie)
+
+czarnedziury_zjawiska łączy czarnedziury z zjawiska (N:M, bo czarna dziura może mieć wiele zjawisk i zjawisko może dotyczyć wielu czarnych dziur)
+
+Baza danych przechowuje informacje o badaczach, czarnych dziurach, ich lokalizacjach, galaktykach, teleskopach, obserwacjach oraz związanych z nimi zjawiskach.
+
