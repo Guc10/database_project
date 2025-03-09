@@ -139,7 +139,7 @@ def generate_telescopes():
     while len(unique_entries) < NUM_TELESCOPES:
         name = random.choice(telescope_names)
         t_type = random.choice(telescope_types)
-        in_use = random.choice([1, 0])
+        in_use = random.choice([1, 0, "null"])
         entry = (name, t_type, in_use)
         unique_entries.add(entry)
 
