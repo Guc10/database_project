@@ -42,11 +42,11 @@ UPDATE nowa_tabela_testowa SET age = 31 WHERE full_name = 'Jan';
 UPDATE nowa_tabela_testowa SET age = 26 WHERE full_name = 'Anna';
 
 -- INSERT IGNORE
-INSERT IGNORE INTO nowa_tabela_testowa (id, full_name, age) VALUES (NEXTVAL(sekwencja), 'Duplikat Jan', 30);
-INSERT IGNORE INTO nowa_tabela_testowa (id, full_name, age) VALUES (NEXTVAL(sekwencja), 'Duplikat Anna', 25);
-INSERT IGNORE INTO nowa_tabela_testowa (id, full_name, age) VALUES (NEXTVAL(sekwencja), 'Duplikat Piotr', 40);
-INSERT IGNORE INTO nowa_tabela_testowa (id, full_name, age) VALUES (NEXTVAL(sekwencja), 'Duplikat Kasia', 35);
-INSERT IGNORE INTO nowa_tabela_testowa (id, full_name, age) VALUES (NEXTVAL(sekwencja), 'Duplikat Tomek', 28);
+INSERT IGNORE INTO nowa_tabela_testowa (id, full_name, age) VALUES (6, 'Duplikat Jan', 30);
+INSERT IGNORE INTO nowa_tabela_testowa (id, full_name, age) VALUES (7, 'Duplikat Anna', 25);
+INSERT IGNORE INTO nowa_tabela_testowa (id, full_name, age) VALUES (8, 'Duplikat Piotr', 40);
+INSERT IGNORE INTO nowa_tabela_testowa (id, full_name, age) VALUES (9, 'Duplikat Kasia', 35);
+INSERT IGNORE INTO nowa_tabela_testowa (id, full_name, age) VALUES (10, 'Duplikat Tomek', 28);
 
 -- DELETE
 DELETE FROM nowa_tabela_testowa WHERE full_name LIKE 'Duplikat%';

@@ -34,7 +34,7 @@ SELECT SUBSTRING(cd.nazwa, 1, 3) AS skrot_nazwy, cd.masa AS masa,
        (SELECT COUNT(*) FROM obserwacje o WHERE o.Id_czarnej_dziury = cd.Id_czarnej_dziury) AS liczba_obserwacji
 FROM czarnedziury cd
 GROUP BY SUBSTRING(cd.nazwa, 1, 3)
-ORDER BY srednia_masa DESC
+ORDER BY masa DESC
 LIMIT 50;
 
 -- 4
@@ -46,13 +46,13 @@ LIMIT 5;
 -- 5
 SELECT LOWER(b.instytucja) AS instytucja_male_litery, COUNT(*) AS liczba_badaczy
 FROM badacze b
-WHERE b.Id_badacza IN (SELECT Id_badacza FROM badacze_obserwacje WHERE Id_obserwacji IN (SELECT Id_obserwacji FROM obserwacje WHERE zakres_promieniowania = 'gamma'))
+WHERE b.Id_badacza IN (SELECT Id_badacza FROM badacze_obserwacje WHERE Id_obserwacji IN (SELECT Id_obserwacji FROM obserwacje))
 GROUP BY LOWER(b.instytucja);
 
 --6
 SELECT UPPER(cd.nazwa) AS nazwa_wielkie_litery, cd.masa AS masa
 FROM (SELECT * FROM czarnedziury WHERE odleglosc_od_ziemi < 1000) cd
-ORDER BY cd.masa DESC
+ORDER BY cd.masa ASC
 LIMIT 10;
 
 --7
@@ -96,24 +96,16 @@ LIMIT 15;
 -- 9
 WITH SredniaOdleglosc AS (
     SELECT 
-        g.nazwa AS nazwa_galaktyki,
-        AVG(cd.odleglosc_od_ziemi) AS srednia_odleglosc
+        cd.odleglosc_od_ziemi AS odleglosc
     FROM 
         czarnedziury cd
-    JOIN 
-        lokalizacje l ON cd.Id_czarnej_dziury = l.Id_czarnej_dziury
-    JOIN 
-        galaktyki g ON l.Id_galaktyki = g.Id_galaktyki
-    GROUP BY 
-        g.nazwa
+   	WHERE
+   	cd.masa > 500000
 )
 SELECT 
-    nazwa_galaktyki, 
-    srednia_odleglosc
+    AVG(odleglosc) AS srednia_odleglosc
 FROM 
     SredniaOdleglosc
-ORDER BY 
-    srednia_odleglosc DESC;
 
 -- 10
 SELECT CONCAT(b.imie, ' ', b.nazwisko) AS pelne_imie, 
