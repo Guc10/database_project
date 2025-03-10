@@ -138,3 +138,14 @@ create or replace table czarnedziury_masa_historia
     data_zmiany      timestamp not null
 )
     collate = utf8mb4_uca1400_ai_ci;
+
+CREATE INDEX idx_badacze_nazwisko
+ON badacze (nazwisko);
+CREATE INDEX idx_czarnedziury_nazwa
+ON czarnedziury (nazwa);
+CREATE INDEX idx_galaktyki_nazwa
+ON galaktyki (nazwa);
+CREATE INDEX idx_obserwacje_data_obserwacji
+ON obserwacje (data_obserwacji);
+CREATE INDEX idx_zjawiska_nazwa
+ON zjawiska (nazwa);

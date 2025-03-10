@@ -1,2 +1,3 @@
 # database_project
- czarnedziurydb
+Projekt na przedmiot zawodowy Bazy Danych,
+
