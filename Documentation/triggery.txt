@@ -1,0 +1,12 @@
+1. przed_wstawieniem_obserwacje: Sprawdza, czy data obserwacji nie jest w przyszłości
+ przed wstawieniem nowego rekordu do tabeli obserwacje. Jeśli data jest w przyszłości, 
+ wywołuje błąd z komunikatem "Data obserwacji nie może być w przyszłości".
+
+2. po_aktualizacji_czarnedziury: Po zaktualizowaniu rekordu w tabeli czarnedziury, 
+sprawdza, czy masa czarnej dziury uległa zmianie. Jeśli masa się nie zmieniła, 
+wywołuje błąd "Masa musi różnić się od starej masy". Jeśli zmiana jest prawidłowa, 
+zapisuje historię zmiany masy.
+
+3. przed_usunieciem_badacze: Przed usunięciem rekordu z tabeli badacze, sprawdza, 
+czy badacz ma przypisane jakiekolwiek obserwacje. Jeśli tak, wywołuje błąd 
+"Nie można usunąć badacza z przypisanymi obserwacjami".

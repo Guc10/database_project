@@ -1,0 +1,27 @@
+1. Średnia masa czarnych dziur w galaktykach: Oblicza średnią masę czarnych dziur w każdej galaktyce.
+
+2. Suma mas czarnych dziur badana przez naukowców: Zlicza sumę mas czarnych dziur większych niż 600000, 
+które zostały zaobserwowane przez badaczy, których łączna suma mas przekracza 1000000.
+
+3. Skróty nazw czarnych dziur i liczba ich obserwacji: Dla każdej czarnej dziury pokazuje jej skróconą nazwę 
+(pierwsze 3 litery), masę i liczbę jej obserwacji.
+
+4. Długość nazw czarnych dziur: Liczy długość nazw czarnych dziur o typie "pierwotne" lub "gwiazdowe" oraz zlicza, 
+ile ich jest dla każdej długości nazwy.
+
+5. Instytucje badaczy badających czarne dziury: Zlicza liczbę badaczy z każdej instytucji, 
+którzy pracują nad obserwacjami czarnych dziur emitujących promieniowanie gamma.
+
+6. Największe czarne dziury blisko Ziemi: Pokazuje nazwy i masy dziesięciu najcięższych czarnych dziur, 
+które są bliżej niż 1000 jednostek odległości od Ziemi.
+
+7. Największa i najmniejsza czarna dziura na podstawie masy i nazwy: Oblicza "wielkość" czarnych dziur 
+(nazwa + masa) i wybiera największą i najmniejszą czarną dziurę.
+
+8. Czarne dziury cięższe niż średnia: Pokazuje skrócone nazwy czarnych dziur i ich masy, 
+które są cięższe niż średnia masa wszystkich czarnych dziur.
+
+9. Średnia odległość czarnych dziur w galaktykach: Oblicza średnią odległość czarnych dziur od Ziemi w 
+każdej galaktyce i sortuje je od najdalszych.
+
+10. Liczba obserwacji dla badaczy: Dla każdego badacza zlicza, ile razy brał udział w obserwacjach czarnych dziur.

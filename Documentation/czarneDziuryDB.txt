@@ -75,4 +75,3 @@ badacze_obserwacje łączy badacze z obserwacje (N:M, bo wielu badaczy może bra
 czarnedziury_zjawiska łączy czarnedziury z zjawiska (N:M, bo czarna dziura może mieć wiele zjawisk i zjawisko może dotyczyć wielu czarnych dziur)
 
 Baza danych przechowuje informacje o badaczach, czarnych dziurach, ich lokalizacjach, galaktykach, teleskopach, obserwacjach oraz związanych z nimi zjawiskach.
-
