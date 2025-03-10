@@ -1,4 +1,22 @@
 -- 1
+WITH MasyCzarnychDziur AS (
+    SELECT 
+        g.nazwa AS nazwa_galaktyki,
+        AVG(cd.masa) AS srednia_masa
+    FROM 
+        czarnedziury cd
+    JOIN 
+        lokalizacje l ON cd.Id_czarnej_dziury = l.Id_czarnej_dziury
+    JOIN 
+        galaktyki g ON l.Id_galaktyki = g.Id_galaktyki
+    GROUP BY 
+        g.nazwa
+)
+SELECT 
+    nazwa_galaktyki, 
+    srednia_masa
+FROM 
+    MasyCzarnychDziur;
 
 -- 2
 SELECT CONCAT(b.imie, ' ', b.nazwisko) AS pelne_imie, SUM(cd.masa) AS suma_mas
@@ -38,7 +56,34 @@ ORDER BY cd.masa DESC
 LIMIT 10;
 
 --7
-
+WITH WielkosciCzarnychDziur AS (
+    SELECT 
+        cd.Id_czarnej_dziury,
+        cd.nazwa,
+        cd.masa,
+        (CAST(SUBSTRING(cd.nazwa, 4) AS UNSIGNED) * cd.masa) AS wielkosc
+    FROM 
+        czarnedziury cd
+)
+(SELECT 
+    'Największa czarna dziura' AS typ,
+    nazwa,
+    wielkosc
+FROM 
+    WielkosciCzarnychDziur
+ORDER BY 
+    wielkosc DESC
+LIMIT 1)
+UNION ALL
+(SELECT 
+    'Najmniejsza czarna dziura' AS typ,
+    nazwa,
+    wielkosc
+FROM 
+    WielkosciCzarnychDziur
+ORDER BY 
+    wielkosc ASC
+LIMIT 1);
 
 -- 8
 SELECT SUBSTRING(cd.nazwa, 1, 3) AS skrot_nazwy, cd.masa AS masa
@@ -49,7 +94,26 @@ ORDER BY AVG(cd.masa)
 LIMIT 15;
 
 -- 9
-
+WITH SredniaOdleglosc AS (
+    SELECT 
+        g.nazwa AS nazwa_galaktyki,
+        AVG(cd.odleglosc_od_ziemi) AS srednia_odleglosc
+    FROM 
+        czarnedziury cd
+    JOIN 
+        lokalizacje l ON cd.Id_czarnej_dziury = l.Id_czarnej_dziury
+    JOIN 
+        galaktyki g ON l.Id_galaktyki = g.Id_galaktyki
+    GROUP BY 
+        g.nazwa
+)
+SELECT 
+    nazwa_galaktyki, 
+    srednia_odleglosc
+FROM 
+    SredniaOdleglosc
+ORDER BY 
+    srednia_odleglosc DESC;
 
 -- 10
 SELECT CONCAT(b.imie, ' ', b.nazwisko) AS pelne_imie, 

@@ -60,3 +60,15 @@ end;
 //
 
 delimiter ;
+
+-- testy
+-- tr no.1
+INSERT INTO obserwacje (Id_czarnej_dziury, data_obserwacji, Id_teleskopu, zakres_promieniowania) VALUES (1, '2026-08-08', 5, 'gamma');
+INSERT INTO obserwacje (Id_czarnej_dziury, data_obserwacji, Id_teleskopu, zakres_promieniowania) VALUES (1, '2024-08-08', 5, 'gamma');
+
+-- tr no.2
+UPDATE czarnedziury set masa = 367194.625 WHERE Id_czarnej_dziury = 1;
+UPDATE czarnedziury set masa = 367594.625 WHERE Id_czarnej_dziury = 1;
+
+-- tr no.3
+delete from badacze where Id_badacza = 1;
